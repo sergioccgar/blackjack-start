@@ -163,6 +163,9 @@ game_on = True
 waiting_for_valid_input = True
 user_input = ""
 aces_on_deck_to_change = 0
+victories = 0
+draws = 0
+defeats = 0
 
 def give_card(receiver):
 
@@ -319,13 +322,19 @@ while game_on:
 
   if player_sum > 21:
     print("Sie haben verloren. Ihre Summe ist grosser als 21.")
+    defeats += 1
   elif player_sum > CPU_sum :
     print("Sie haben gewonnen!")
+    victories += 1
   elif player_sum == CPU_sum:
     print("Gleichstand!")
+    draws += 1
   else:
     print("Sie haben verloren weil der Computer gewonnen hat. Schade.")
+    defeats += 1
 
+  print(f"Sie haben {victories} mal gewonnen, {draws} mal unentschieden und {defeats} mal verloren.")
+  
   waiting_for_valid_input = True
   while waiting_for_valid_input:
     user_input = input("Möchten Sie noch einmal spielen? Schreiben Sie 'J' (Ja) oder 'N' (Nein).\n")
